@@ -1,23 +1,18 @@
 import requests
 from requests_oauthlib import OAuth1
 import json
+from cs50 import SQL
+from werkzeug.security import check_password_hash, generate_password_hash
 
-artist="Miracle of Sound"
+db = SQL("postgres://ldrthfhaqyelpx:3350e790b7910d24ff94ec98eb5633d54b50e00d1864c7c162209e063676d04b@ec2-52-22-216-69.compute-1.amazonaws.com:5432/d96punflgs6a2d")
 
-url = "https://api.spotify.com/v1/artists/" + artist.replace(" ", "%20")
+rows = db.execute("SELECT * FROM users")
+print(rows)
 
-auth="BQDDf7I5ojrzmX1O6J5p3H-NuYSezepzzmg9PUW8BKQ7NMl7wSxhGe2e6051ETZBINDt3KbAu3QqqezfMydedjTi_Tm_Yb9CwM0rNe-McW-_ykQo9unb9dhzDt8RANKbZD6y7GzN-x3pH8I"
+username="BOB"
+password="BobsPassword"
 
-content_type = "application/json"
 
-params={
-    "Authorization": "Bearer " + auth,
-    "Accept": content_type,
-    "Content-Type": content_type
-}
-
-r = requests.get(url, headers=params)
-
-print(r.text)
-
-responseItem = r.json()
+db.execute("INSERT INTO users (id, username, hash) VALUES (:userHash, :username, :hash)", userHash=generate_password_hash(username), username=username, hash=generate_password_hash(password))
+rows = db.execute("SELECT * FROM users WHERE username=:username", username=username)
+print(rows)

@@ -65,7 +65,7 @@ app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
-db = SQL("postgres://ldrthfhaqyelpx:3350e790b7910d24ff94ec98eb5633d54b50e00d1864c7c162209e063676d04b@ec2-52-22-216-69.compute-1.amazonaws.com:5432/d96punflgs6a2d")
+db = SQL("sqlite:///app.db")
 
 @app.route("/")
 @login_required
@@ -104,6 +104,7 @@ def login():
 
         # Remember which user has logged in
         session["user_id"] = rows[0]["id"]
+        session["user_name"] = rows[0]["username"]
 
         # Redirect user to home page
         return redirect("/")
@@ -139,8 +140,8 @@ def register():
         return apology("Username and password must match!")
 
     #Insert the new row into users, storing a hash of the user's password, not the password itself.
-    db.execute("INSERT INTO users (username, hash) VALUES (:username, :myHash)",
-        username=request.form.get("username"), myHash=generate_password_hash(request.form.get("password")))
+    db.execute("INSERT INTO users (username, hash, id) VALUES (:username, :myHash, :userHash)",
+        username=request.form.get("username"), myHash=generate_password_hash(request.form.get("password")), userHash=generate_password_hash(request.form.get("username")))
 
 
     return redirect("/")
