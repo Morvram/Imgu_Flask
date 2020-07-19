@@ -1,0 +1,16 @@
+{
+    "folders": [
+		{
+			"path": "..\\..\\Archive of Pie\\Python"
+		},
+		{
+			"path": "..\\..\\Archive of Pie\\Algorithm Testing"
+		},
+		{
+			"path": ".."
+		}
+	],
+    "settings": {
+        "python.pythonPath": "C:\\Users\\joshu\\AppData\\Local\\Programs\\Python\\Python38-32\\python.exe"
+    }
+}

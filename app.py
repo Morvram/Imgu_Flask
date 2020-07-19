@@ -120,7 +120,7 @@ def register():
     if request.method != "POST":
         return render_template("register.html") #This shouldn't happen regardless of user input!
 
-    #Make sure the username is not blank and does not already exist.
+    #Make sure the username is not blankher and does not already exist.
     if not request.form.get("username"):
         return apology("Must provide username")
     if "'" in request.form.get("username") or ";" in request.form.get("username"):
