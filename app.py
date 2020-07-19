@@ -336,3 +336,6 @@ def profile():
 @login_required
 def docs():
     return render_template("docs.html")
+
+if __name__ == "main":
+    app.run()
