@@ -1,0 +1,25 @@
+{% extends "layout.html" %} {% block title %} Documentation {% endblock %} {% block main %}
+<h2 class="center">Documentation</h2>
+<br>
+<h5 class="center" style="color: green">About this site</h5>
+<br>
+<p>Welcome to ImguFlask! This web application, built with Flask, allows you to upload photos and apply filters to them.</p>
+<p>The images are hosted on Imgur, using Imgur's open-use API - it was pretty simple to set up the API linkage, so take this site as a demonstration.</p>
+<p>If I can do it, I have no doubt that you can as well.</p>
+<br>
+<h5 class="center" style="color: green">How to use this site</h5>
+<br>
+<p>Filters can be applied from the Library page or from the Index page - but you must upload an image first.</p>
+<p>Keep in mind that at the end of each session, the image held in your index will be reset, so make sure to save the image to your library once you get one you really like.</p>
+<p>Your user profile stores interesting statistics about the images you've uploaded, filtered, and saved to your library, so check out that tab if you're curious.</p>
+<br>
+<center>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/4hnrsk_FySg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</center>
+<br>
+<h5 class="center" style="color: green">Thanks and acknowledgments</h5>
+<br>
+<p>I made significant use of the Python packages Requests, Pillow, json, and of course the CS50 library's SQL module, in putting together this site's back end.</p>
+<p>My thanks to all the original developers of those packages.</p>
+<p>Additionally, I'd like to thank the CS50 team for providing the framework in which I learned to build a website like this one.</p>
+{% endblock %}

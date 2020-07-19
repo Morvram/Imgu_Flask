@@ -1,0 +1,19 @@
+{% extends "layout.html" %} {% block title %} Filter {% endblock %} {% block main %}
+<form action="/filter" method="POST">
+    <label for="filter">Choose a filter:</label>
+    <select name="filter" id="filter">
+    {% for item in filterSelection %}
+        <option value={{item}}>{{item}}</option>
+    {% endfor %}
+    </select> {% for item in imgSelection %}
+    <div style="border: 1px solid black; width:180px;">
+        <input type="radio" id={{item}} class="imgSelector" name="image" value={{item}}>
+        <label for={{item}}>
+        <div class="image-container">
+            <img src={{item}}>
+        </div>
+    </label>
+    </div>{% endfor %}
+    <button class="btn btn-secondary" type="submit">Create Filter</button>
+</form>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "layout.html" %} {% block title %} Library {% endblock %} {% block main %}
+<div class="wrapper-grid">
+    {% for item in imageLibrary %}
+    <div class="grid-item">
+        <div class="image-container">
+            <img src={{item}}>
+        </div>
+        <label for={{item}}>
+            <form action="/filter" method="POST" enctype="multipart/form-data" class="relative">
+                <input type="hidden" name="image" value={{item}}>
+                <select name="filter" id="filter">
+                    {% for item in filterSelection %}
+                        <option value={{item}}>{{item}}</option>
+                    {% endfor %}
+                </select>
+                <button type="submit">Filter</button>
+            </form>
+        </label>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

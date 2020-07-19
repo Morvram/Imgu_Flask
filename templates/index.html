@@ -1,0 +1,26 @@
+{% extends "layout.html" %} {% block title %} Index {% endblock %} {% block main %}
+<div class="center" style=" text-align: center; border: 1px solid black; padding: 0px;">
+    <img id="currImg" src={{currentImage}} alt="Image error" style="width:300px; height:300px">
+    <label for="currImg"><a href={{currentImage}}>{{currentImage}}</a></label>
+</div>
+<div class="center" style="width: 100% text-align: center">
+    <p><a href="/upload">Upload an image</a></p>
+    {% if currentImage != "" %}
+    <form action="/filter" method="POST">
+        <input type="hidden" name="image" value={{currentImage}}>
+        <label for="filter">Apply a filter to the current image:</label>
+        <select name="filter" id="filter">
+            {% for item in ["BLUR", "GAUSSIAN_BLUR", "UNSHARP_MASK", "CONTOUR", "DETAIL", "EDGE_ENHANCE", "EDGE_ENHANCE_MORE", "EMBOSS", "FIND_EDGES", "SMOOTH", "SMOOTH_MORE", "SHARPEN"] %}
+                <option value={{item}}>{{item}}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Filter it</button>
+    </form>
+    <p>
+        <form action="/library" method="post" id="libraryPostForm">
+            <a href="javascript:{}" onclick="document.getElementById('libraryPostForm').submit(); return false;" class="librarySubmitLink ">Add the image to your library.</a>
+        </form>
+    </p>
+    {% endif %}
+</div>
+{% endblock %}

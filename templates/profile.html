@@ -1,0 +1,36 @@
+{% extends "layout.html" %} {% block title %} Profile {% endblock %} {% block main %}
+<script>
+    Spinner.hide();
+</script>
+<div class="center">
+    <h3 id=" profile-header">Your user statistics</h3>
+    <table id="main-stats">
+        <tr>
+            <th>Your total images uploaded</th>
+            <td>{{uploads}}</td>
+        </tr>
+        <tr>
+            <th>Your total filters applied</th>
+            <td>{{filters}}</td>
+        </tr>
+        <tr>
+            <th class="library-stat">Number of images in your library</th>
+            <td>{{sizeImgs}}</td>
+        </tr>
+        <tr>
+            <th class="library-stat">Size of your library in bytes</th>
+            <td>{{sizeBytes}}</td>
+        </tr>
+    </table>
+    <br>
+    <div id="favorites-section">
+        <h5 class="favorites-header">Your favorite filters:</h5>
+        {{favFilter}}
+        <p>Total times used: {{favNum}}</p>
+        <br>
+        <h5 class="favorites-header">Your least favorite filters:</h5>
+        {{lstFav}}
+        <p>Total times used: {{lstNum}}</p>
+    </div>
+</div>
+{% endblock %}
