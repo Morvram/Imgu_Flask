@@ -16,6 +16,10 @@ import requests
 
 from helpers import apology, login_required, lookup, usd
 
+#from flask_login import LoginManager, UserMixin, login_required, login_user, logout_user, current_user
+
+
+
 # Configure application
 app = Flask(__name__)
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
